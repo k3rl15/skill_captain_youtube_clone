@@ -1,0 +1,66 @@
+Explanation of the code so far
+
+Concept:
+
+Let's break down the code in `page.tsx` and `MediaPlayer.tsx` to explain how the components are structured and how the `use client` directive is used.
+Explanation of `page.tsx`
+// page.tsx
+
+
+"use client"
+
+
+import MediaPlayer from '@/components/MediaPlayer'
+
+
+export default function Home() {
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <div>
+        <MediaPlayer/>
+      </div>
+    </main>
+  )
+}
+
+1. `"use client"` Directive: - The `"use client"` directive is used to declare a boundary between Server and Client Component modules. - It indicates that components 
+imported into this file and its children are considered part of the client bundle. This means they will be handled on the client side and can use client-side features.
+2. `import MediaPlayer from '@/components/MediaPlayer'`: - This imports the `MediaPlayer` component that we created earlier.
+3. `<main>` Element: - It contains a flex container (`flex`) with minimum height (`min-h-screen`). - The content is vertically aligned in a column (`flex-col`). - It has 
+padding (`p-24`) on all sides.
+4. `<div>` Element with `MediaPlayer` Component: - The main content of the page is wrapped in a `div`. - The `MediaPlayer` component is rendered inside this `div`.
+Explanation of `MediaPlayer.tsx`
+// MediaPlayer.tsx
+
+
+import dynamic from 'next/dynamic'
+import React from "react";
+
+const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
+
+export default function MediaPlayer() {
+  return (
+    <ReactPlayer
+      url={"https://skillcaptain-public.s3.ap-south-1.amazonaws.com/videos/database_index_without_music.mp4"}
+      width="100%"
+      height="100%"
+      controls={false}
+    />
+  );
+}
+
+1. `import dynamic from 'next/dynamic'`: - `dynamic` is a Next.js feature that allows components to be loaded dynamically, meaning they are not included in the initial 
+bundle but are loaded on-demand.
+2. `const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });`: - This dynamically imports the `ReactPlayer` component from the `"react-player"` library. 
+- The `{ ssr: false }` option is set to indicate that this component should not be rendered on the server side.
+3. `export default function MediaPlayer() { ... }`: - Defines the `MediaPlayer` component as a functional component.
+4.`<ReactPlayer>` Element: - Uses the dynamically imported `ReactPlayer` component. - `url`: Specifies the URL of the video to be played. - `width` and `height`: Set to 
+"100%" to make the player fill the entire width and height of its container. 
+- `controls`: Set to `false` to hide the default video controls, allowing for custom controls or interactions in the application.
+Summary:
+- The `page.tsx` file includes the `MediaPlayer` component using the `"use client"` directive, indicating that it is a client-side component. 
+- The `MediaPlayer.tsx` file dynamically imports the `ReactPlayer` component and defines a simple media player component with specified properties.
+This structure allows for a clean separation of concerns, with the `MediaPlayer` component handling the video player functionality, and the `page.tsx` file focusing on 
+the layout and composition of the page.
+
+
