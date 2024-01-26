@@ -1,0 +1,97 @@
+Add Suggested Videos
+
+To Do
+
+Concept:
+
+We'll guide you through creating a media player with suggestions using Next.js. we'll provide explanations and code snippets to make it easy for everyone to follow along.
+Day 5: Adding Suggestion Component
+1. Introduction to the Suggestion Component
+The Suggestion component will display a list of suggested videos using the `ReactPlayer` component. We'll create a simple array of video objects with titles and YouTube URLs.
+2. Create the `Suggestion.tsx` Component
+Create a new file named `Suggestion.tsx` inside the `components` folder. Add the following code:
+
+    import React from "react";
+    import dynamic from 'next/dynamic'
+    
+    
+    const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
+    
+    
+    const videos = [
+        {
+            title: "Video 1",
+            url: "https://youtu.be/0na2VPn-TIw?feature=shared",
+        },
+        {
+            title: "Video 2",
+            url: "https://youtu.be/ThIvYuCFDoQ?feature=shared",
+        },
+    ];
+    
+    export default function Suggestion() {
+        return (
+            <div>
+    <h2>Suggested Videos</h2>
+        <ul>
+            {videos.map((video, index) => (
+                <li key={index}>
+                    <h3>{video.title}</h3>
+                    <div>
+                                <ReactPlayer
+                                    url={video.url}
+                                    width="100%"
+                                    height="100%"
+                                    controls={true}
+                                />
+                    </div>
+    
+            </li>
+        ))}
+    </ul>
+</div>
+        );
+    };
+    
+
+3. Integrate the Suggestion Component into the Page
+Now, let's integrate the `Suggestion` component into your `pages/index.tsx`:
+// pages/index.tsx
+    "use client"
+
+    // pages/index.js
+    import React from 'react';
+    import MediaPlayer from '@/components/MediaPlayer';
+    import Suggestion from '@/components/Suggestion';
+    import DisplayComments from '@/components/DisplayComments';
+    
+    export default function Home() {
+      return (
+        <div className="flex min-h-screen flex-col p-1">
+          <header className="p-4 text-center bg-gray-800">
+            <h1 className="text-4xl font-bold">Stream Video</h1>
+          </header>
+          <main className="grid md:grid-cols-3 grid-cols-1 gap-4 p-20 flex-grow">
+              <div className="border-solid col-span-2 border-2 border-pink flex flex-grow">
+                <MediaPlayer />
+              </div>
+              <div className="border-solid border-2 border-pink flex flex-grow">
+                <Suggestion />
+              </div>
+              <div>
+              </div>
+          </main>
+          <footer className="p-4 text-center bg-gray-800">
+            <p className="text-sm">© 2024 Your Website Name</p>
+          </footer>
+</div>
+      );
+    }
+
+4. Explanation
+- In the `Suggestion.tsx` component, we use the `ReactPlayer` component from the "react-player" library to embed YouTube videos. The videos array contains objects with 
+titles and YouTube URLs. - The `Suggestion` component maps through the videos array and renders a list of suggested videos with titles and embedded players. - In the 
+`pages/index.tsx`, we import and use the `Suggestion` component inside the main content grid.
+5. Testing
+Ensure your Next.js development server is running (`npm run dev`), and then open your browser to `http://localhost:3000` to see the updated page with the Suggestion component.
+Congratulations! You've successfully added a Suggestion component to your media player project. You should run your project and see the screen like the one below.
