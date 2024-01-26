@@ -1,0 +1,60 @@
+Create Media Player Component
+
+Concept:
+
+In this Day 3 tutorial, we'll build upon the existing Next.js project and incorporate the ReactPlayer library to create a simple media player component. This component
+will allow us to embed and play a video in our application.
+Day 3 Tutorial: Integrating ReactPlayer in Next.js
+Step 1: Install ReactPlayer
+Run the following command in your terminal to install the ReactPlayer library:
+npm install react-player
+
+This will add the ReactPlayer library as a dependency in your `package.json` file.
+Step 2: Create a Folder for Components
+Inside the `src/` folder, create a new folder called `components`.
+mkdir src/components
+
+Step 3: Create `MediaPlayer.tsx` Component
+Inside the newly created `components` folder, create a file named `MediaPlayer.tsx`. Copy and paste the following code into it:
+// src/components/MediaPlayer.tsx
+import dynamic from 'next/dynamic';
+import React from 'react';
+
+const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
+
+export default function MediaPlayer() {
+  return (
+    <ReactPlayer
+      url={'https://skillcaptain-public.s3.ap-south-1.amazonaws.com/videos/database_index_without_music.mp4'}
+      width="100%"
+      height="100%"
+      controls={false}
+    />
+  );
+}
+
+Step 4: Update `page.tsx` to Include `MediaPlayer`
+Open the `page.tsx` file in the `src` folder and update it as follows:
+// src/app/page.tsx
+import MediaPlayer from '@/components/MediaPlayer';
+
+export default function Home() {
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <div>
+        <MediaPlayer />
+      </div>
+    </main>
+  );
+}
+
+Step 5: Run the Development Server
+Save your files and run the development server:
+npm run dev
+
+Visit [http://localhost:3000](http://localhost:3000) in your browser to see the updated page with the integrated media player component.
+Recap:
+- We installed the ReactPlayer library to embed and play videos in our Next.js application. - Created a `MediaPlayer` component that uses ReactPlayer to display a video. 
+- Updated the `page.tsx` file to include the `MediaPlayer` component. - Ensured dynamic imports are enabled in the `tsconfig.json` file.
+Now, your Next.js application should display a page with the embedded video player. Feel free to explore more features of ReactPlayer and customize the player according 
+to your needs.
