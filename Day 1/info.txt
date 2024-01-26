@@ -1,0 +1,42 @@
+Create your next application
+
+Concept:
+
+Here's a step-by-step tutorial on how to create a Next.js app using Node.js 18.17 or later on macOS, Windows, or Linux. We'll use the `npx create-next-app@latest` command 
+and choose default options.
+
+Step 1: Install Node.js
+Make sure you have Node.js installed on your system. You can download the latest version from the official Node.js website: [https://nodejs.org/](https://nodejs.org/). Your 
+node version should be 18.17 or later.
+
+Step 2: Open Terminal (or Command Prompt on Windows)
+Open your terminal or command prompt. You can find it by searching for "Terminal" on macOS or Linux, or "Command Prompt" on Windows.
+
+Step 3: Run the Create Next App Command
+In the terminal, run the following command to create a new Next.js app:
+npx create-next-app@latest
+This command uses `npx` to execute the latest version of `create-next-app`. It will prompt you to enter the name of your new app.
+
+Step 4: Enter App Name
+Type a name for your Next.js app when prompted, and press Enter. The default name is usually taken from the current directory.
+What is your project named? (my-next-app)
+Feel free to change the default name to stream-video. Press Enter to proceed.
+
+Step 5: Wait for Installation
+The `create-next-app` command will take a few moments to download dependencies and set up the project. You'll see a progress indicator in the terminal. You should see the 
+success message.
+
+Step 6: Navigate to the App Directory
+Once the installation is complete, navigate to your new app's directory using the `cd` command. For example:
+cd my-next-app
+Replace `my-next-app` with the name you provided in Step 4.
+
+Step 7: Start the Development Server
+Now, run the following command to start the Next.js development server:
+npm run dev
+This will start the development server, and you should see output indicating that your app is running. By default, the app will be available at http://localhost:3000.
+
+Step 8: Open Your App in a Browser
+Open your web browser and navigate to http://localhost:3000 to see your new Next.js app in action!
+That's it! You've successfully created a new Next.js app using the default options. You can now start building and customizing your app based on your project requirements. 
+You should see following image on browser, if everything is working fine.
